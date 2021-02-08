@@ -5,15 +5,34 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
+class NaryTreeNode {
+
+  public int val;
+  public List<NaryTreeNode> children;
+
+  public NaryTreeNode() {
+  }
+
+  public NaryTreeNode(int _val) {
+    val = _val;
+  }
+
+  public NaryTreeNode(int _val, List<NaryTreeNode> _children) {
+    val = _val;
+    children = _children;
+  }
+}
+
 public class NaryTreeTraversal {
 
   /**
    * N-ary Tree Postorder Traversal -- Recursive
+   *
    * @see <a href="https://leetcode.com/problems/n-ary-tree-postorder-traversal/">Leetcode Link</a>
    */
   public List<Integer> postorderRecursive(NaryTreeNode root) {
     List<Integer> res = new ArrayList<>();
-    postHelper(root,res);
+    postHelper(root, res);
     return res;
   }
 

@@ -3,10 +3,31 @@ import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
 
+class BinaryTreeNode {
+
+  int val;
+  BinaryTreeNode left;
+  BinaryTreeNode right;
+
+  BinaryTreeNode() {
+  }
+
+  BinaryTreeNode(int val) {
+    this.val = val;
+  }
+
+  BinaryTreeNode(int val, BinaryTreeNode left, BinaryTreeNode right) {
+    this.val = val;
+    this.left = left;
+    this.right = right;
+  }
+}
+
 public class BinaryTreeTraversal {
 
   /**
    * Inorder Traversal - Iterative solution
+   *
    * @see <a href="https://leetcode.com/problems/binary-tree-inorder-traversal/">LeetCode Link</a>
    */
   public List<Integer> inorderTraversalIterative(BinaryTreeNode root) {
