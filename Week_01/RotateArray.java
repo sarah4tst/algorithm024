@@ -8,20 +8,17 @@ public class RotateArray {
   public void rotate(int[] nums, int k) {
     int len = nums.length;
     k %= len;
-    if (k == 0) {
+    if (len <= 1 || k == 0) {
       return;
     }
-    rotateExtraSpace(nums, k, len);
-  }
-
-  /**
-   * Use extra space and array copy. time O(n), space O(n)
-   */
-  private void rotateExtraSpace(int[] nums, int k, int len) {
     int[] tmp = new int[len];
-    System.arraycopy(nums, 0, tmp, k, len - k);
-    System.arraycopy(nums, len - k, tmp, 0, k);
-    System.arraycopy(tmp, 0, nums, 0, len);
+    for (int i = 0; i < len; i++) {
+      // move ksteps to right
+      tmp[(i + k) % len] = nums[i];
+    }
+    for (int i = 0; i < len; i++) {
+      nums[i] = tmp[i];
+    }
   }
 
   /**
@@ -56,7 +53,9 @@ public class RotateArray {
 
   private void rotateToRight(int[] nums, int len) {
     int tmp = nums[len - 1];
-    System.arraycopy(nums, 0, nums, 1, len - 1);
+    for (int i = len - 2; i >= 0; i--) {
+      nums[i + 1] = nums[i];
+    }
     nums[0] = tmp;
   }
 }

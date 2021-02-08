@@ -10,14 +10,17 @@ public class RemoveDuplicatesFromSortedArray {
    * in-place with O(1) extra memory.
    */
   public int removeDuplicates(int[] nums) {
-    if (nums == null || nums.length == 0) return 0;
-    int pos = 1;
-
-    for (int i = 1; i < nums.length ; i++) {
-      if (nums[i] != nums[i-1]) {
-        nums[pos++] = nums[i];
-      }
+    if (nums == null || nums.length == 0) {
+      return 0;
     }
-    return pos;
+    int pos = 0; // the index of the non-duplicate
+    int i = 1; // visit all num from index 1
+    while (i < nums.length) {
+      if (nums[i] != nums[pos]) {
+        nums[++pos] = nums[i];
+      }
+      i++;
+    }
+    return pos + 1;
   }
 }
