@@ -42,22 +42,20 @@ public class Anagram {
   }
 
   /**
-   * Given two strings s and t, write a function to determine if t is an anagram of s.
-   *
-   * @see <a href="https://leetcode.com/problems/valid-anagram/description/">Leetcode Link</a>
+   * 242. Valid Anagram
    */
   // Follow up: What if the inputs contain unicode characters? How would you adapt your solution to such case?
   public boolean isAnagramHashMap(String s, String t) {
     if (s.length() != t.length()) {
       return false;
     }
-    Map<Character, Integer> map = new HashMap<>();
-    for (Character c : s.toCharArray()) {
-      map.merge(c, 1, Integer::sum);
+    Map<Character, Integer> countMap = new HashMap<>();
+    for (char c : s.toCharArray()) {
+      countMap.merge(c, 1, Integer::sum);
     }
-    for (Character c : t.toCharArray()) {
-      map.merge(c, -1, Integer::sum);
-      if (map.get(c) == -1) {
+    for (char c : t.toCharArray()) {
+      countMap.merge(c, -1, Integer::sum);
+      if (countMap.getOrDefault(c, -1) < 0) {
         return false;
       }
     }

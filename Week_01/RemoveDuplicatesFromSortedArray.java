@@ -13,14 +13,14 @@ public class RemoveDuplicatesFromSortedArray {
     if (nums == null || nums.length == 0) {
       return 0;
     }
-    int pos = 0; // the index of the non-duplicate
-    int i = 1; // visit all num from index 1
-    while (i < nums.length) {
-      if (nums[i] != nums[pos]) {
-        nums[++pos] = nums[i];
+    int res = 0;
+    for (int i = 0; i < nums.length; i++) {
+      // 与上一个有效元素比较，不同的时候赋值
+      if (nums[i] != nums[res]) {
+        res++;
+        nums[res] = nums[i];
       }
-      i++;
     }
-    return pos + 1;
+    return res + 1;
   }
 }

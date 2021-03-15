@@ -7,17 +7,19 @@ public class MoveZeroes {
    * @see <a href="https://leetcode.com/problems/move-zeroes/">Leetcode Link</a>
    */
   public void moveZeroes(int[] nums) {
-    if (nums == null) {
+    if (nums == null || nums.length <= 1) {
       return;
     }
-    for (int i = 0, pos = 0; i < nums.length; i++) {
+    int nonZeroes = 0;
+
+    for (int i = 0; i < nums.length; i++) {
       if (nums[i] != 0) {
-        // only assign new value when i!=pos. fills with 0
-        if (i != pos) {
-          nums[pos] = nums[i];
+        // 交换元素同时填充0
+        if (nonZeroes != i) {
+          nums[nonZeroes] = nums[i];
           nums[i] = 0;
         }
-        pos++;
+        nonZeroes++;
       }
     }
   }
